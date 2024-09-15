@@ -8,15 +8,9 @@ basics:
   email: "erudite.gun@gmail.com"
   website: "https://geonkim.netlify.app/"
   summary: >
-    Richard hails from Tulsa.
-    He has earned degrees from the University of Oklahoma and Stanford. (Go Sooners and Cardinals!)
-    Before starting Pied Piper, he worked for Hooli as a part time software developer.
-    While his work focuses on applied information theory,
-    mostly optimizing lossless compression schema of both the length-limited and adaptive variants,
-    his non-work interests range widely,
-    everything from quantum computing to chaos theory.
-    He could tell you about it, but THAT would NOT be a “length-limited” conversation!
-    Open `_data/resume.yml` to edit this text.
+    I’m a telecom software engineer from Cheonan, currently pursuing graduate studies at Kyunghee University. 
+    My work focuses on optimizing AI models for energy-saving use cases, and I actively contribute to cloud-native RAN open-source projects. 
+    Outside of work, I’m interested in distributed systems and cloud-native technologies.
   location:
     address: "Kyunghee Ungiversity EE549"
     postalCode: "16419"
@@ -34,13 +28,14 @@ work:
     startDate: "2024-04-08"
     endDate: ""
     summary: >
-      Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has
-      consistently fielded high Weisman Scores™ that are not merely competitive,
-      but approach the theoretical limit of lossless compression.
+      Aether is an open-source 5G platform for edge computing that runs a cloud-native mobile core (SD-Core) and an O-RAN compatible RAN (SD-RAN) on a Kubernetes-based edge cloud. 
+      The platform offers Connectivity-as-a-Service, allowing users to easily scale from small deployments to large multi-site environments through a runtime API (AMP) and DevOps lifecycle management (OnRamp). 
+      It also provides flexible deployment options through compatibility with commercial 4G/5G small cells.
     highlights:
-      - "Built an algorithm for artist to detect if their music was violating copy right infringement laws"
-      - "Successfully won Techcrunch Disrupt"
-      - "Optimized an algorithm that holds the current world record for Weisman Scores"
+      - Release process
+      - Design/Implement Scalable RAN Simulator
+      - Aether OnRamp integration
+      - Research SD-RAN/Aether
 # volunteer:
 #   - organization: "CoderDojo"
 #     position: "Teacher"
@@ -51,11 +46,11 @@ work:
 #     highlights:
 #       - "Awarded 'Teacher of the Month'"
 education:
-  - institution: "University of Oklahoma"
-    area: "Information Technology"
+  - institution: "Kyunghee University"
+    area: "Electronic Engineering"
     studyType: "Bachelor"
-    startDate: "2011-06-01"
-    endDate: "2014-01-01"
+    startDate: "2017-03-01"
+    endDate: "2023-01-01"
     gpa: "4.0"
     courses:
       - "DB1101 - Basic SQL"
