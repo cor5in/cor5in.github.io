@@ -1,5 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-09-26T22:18:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Geon Kim</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>&lt;firstname&gt; &lt;lastname&gt;</name><email>&lt;mail@domain.tld&gt;</email></author><entry><title type="html">Joint Traffic Prediction And Base Station Sleepiong For Energy Saving In Cellular Networks</title><link href="http://localhost:4000/blog/example/2024-09-26-joint-traffic-prediction-and-base-station-sleepiong-for-energy-saving-in-cellular-networks/" rel="alternate" type="text/html" title="Joint Traffic Prediction And Base Station Sleepiong For Energy Saving In Cellular Networks" /><published>2024-09-26T00:00:00+09:00</published><updated>2024-09-26T00:00:00+09:00</updated><id>http://localhost:4000/blog/example/joint-traffic-prediction-and-base-station-sleepiong-for-energy-saving-in-cellular-networks</id><content type="html" xml:base="http://localhost:4000/blog/example/2024-09-26-joint-traffic-prediction-and-base-station-sleepiong-for-energy-saving-in-cellular-networks/"><![CDATA[<!--more-->
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-10-04T21:05:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Geon Kim</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>&lt;firstname&gt; &lt;lastname&gt;</name><email>&lt;mail@domain.tld&gt;</email></author><entry><title type="html">Osc Aimlfw Installation</title><link href="http://localhost:4000/blog/aimlfw/2024-10-04-OSC-AIMLFW-Installation/" rel="alternate" type="text/html" title="Osc Aimlfw Installation" /><published>2024-10-04T00:00:00+09:00</published><updated>2024-10-04T00:00:00+09:00</updated><id>http://localhost:4000/blog/aimlfw/OSC-AIMLFW-Installation</id><content type="html" xml:base="http://localhost:4000/blog/aimlfw/2024-10-04-OSC-AIMLFW-Installation/"><![CDATA[<!--more-->
+<ul class="large-only" id="markdown-toc">
+  <li><a href="#o-ran-aimlfw-installation" id="markdown-toc-o-ran-aimlfw-installation">O-RAN AIMLFW Installation</a>    <ul>
+      <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a>        <ul>
+          <li><a href="#installation" id="markdown-toc-installation">Installation</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="o-ran-aimlfw-installation">O-RAN AIMLFW Installation</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<h3 id="installation">Installation</h3>
+
+<ul>
+  <li>설치 스크립트 실행</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/install_traininghost.sh
+</code></pre></div></div>
+
+<p><img src="/assets/img/blog/aimlfw_installation/installation_1.png" alt="Fig 1" /></p>
+
+<hr />
+
+<ul>
+  <li>10 - 20분 정도 기다린 후 파드가 잘 설치되어 있는지 확인</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pod -A
+</code></pre></div></div>
+
+<p><img src="/assets/img/blog/aimlfw_installation/installation_2.png" alt="Fig 2" /></p>
+
+<hr />
+
+<ul>
+  <li>서비스를 확인하여 어떤 포트들이 열려있는지 확인</li>
+</ul>
+
+<p><img src="/assets/img/blog/aimlfw_installation/installation_3.png" alt="Fig 3" /></p>
+
+<hr />
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">32005</code> 포트로 대시보드 들어가보기</li>
+</ul>
+
+<p><img src="/assets/img/blog/aimlfw_installation/installation_4.png" alt="Fig 4" /></p>
+
+<hr />
+
+<ul>
+  <li>Install Influx DB as datalake</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install my-release bitnami/influxdb --version 5.13.5
+kubectl exec -it &lt;pod name&gt; bash
+</code></pre></div></div>
+
+<p><img src="/assets/img/blog/aimlfw_installation/installation_5.png" alt="Fig 5" /></p>
+
+<hr />
+
+<ul>
+  <li>커맨드를 입력하여 <code class="language-plaintext highlighter-rouge">username</code>, <code class="language-plaintext highlighter-rouge">org name</code>, <code class="language-plaintext highlighter-rouge">org id</code> 그리고 <code class="language-plaintext highlighter-rouge">access token</code> 얻기</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat bitnami/influxdb/influxd.bolt | tr -cd "[:print:]"
+</code></pre></div></div>
+
+<p><img src="/assets/img/blog/aimlfw_installation/installation_6.png" alt="Fig 6" /></p>
+
+<p><img src="/assets/img/blog/aimlfw_installation/installation_7.png" alt="Fig 7" /></p>
+
+<hr />
+
+<ul>
+  <li>원활한 코드 진행을 위해 별도의 모듈들을 설치해준다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install pip
+sudo pip3 install pandas
+sudo pip3 install influxdb_client
+</code></pre></div></div>
+
+<p><img src="/assets/img/blog/aimlfw_installation/installation_8.png" alt="Fig 8" /></p>
+
+<hr />
+
+<p>위의 과정을 마치게 되면 <code class="language-plaintext highlighter-rouge">AIMLFW</code>를 사용할 수 있는 정말 기초적인 준비가 끝나게 된다.</p>]]></content><author><name>&lt;firstname&gt; &lt;lastname&gt;</name><email>&lt;mail@domain.tld&gt;</email></author><category term="aimlfw" /><summary type="html"><![CDATA[O-RAN Software Community 프로젝트 AIMLFW 설치 정리]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/pawel-czerwinski-848z7lbCjoo-unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/pawel-czerwinski-848z7lbCjoo-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Joint Traffic Prediction And Base Station Sleepiong For Energy Saving In Cellular Networks</title><link href="http://localhost:4000/blog/paper/2024-09-26-joint-traffic-prediction-and-base-station-sleepiong-for-energy-saving-in-cellular-networks/" rel="alternate" type="text/html" title="Joint Traffic Prediction And Base Station Sleepiong For Energy Saving In Cellular Networks" /><published>2024-09-26T00:00:00+09:00</published><updated>2024-09-26T00:00:00+09:00</updated><id>http://localhost:4000/blog/paper/joint-traffic-prediction-and-base-station-sleepiong-for-energy-saving-in-cellular-networks</id><content type="html" xml:base="http://localhost:4000/blog/paper/2024-09-26-joint-traffic-prediction-and-base-station-sleepiong-for-energy-saving-in-cellular-networks/"><![CDATA[<!--more-->
 
 <ul class="large-only" id="markdown-toc">
   <li><a href="#joint-traffic-prediction-and-base-station-sleeping-for-energy-saving-in-cellular-networks" id="markdown-toc-joint-traffic-prediction-and-base-station-sleeping-for-energy-saving-in-cellular-networks">Joint Traffic Prediction and Base Station Sleeping for Energy Saving in Cellular Networks</a>    <ul>
@@ -241,7 +335,7 @@
 
 <p>만약 식 (13)에 대한 실현 가능한 해가 존재한다면, 선택된 기지국 집합 (\(N_s = \{ n \mid x_{n}=1 \}\)) 이 bandwidth 및 power 제한 이내에서 TDA의 속도 요구사항을 충족할 수 있다 말할 수 있다. 식 (13)은 <code class="language-plaintext highlighter-rouge">convex optimization algorithm</code>으로 해결할 수 있다. 또한 이와 동일한 방식으로 (8) 식도 해결할 수 있다.</p>
 
-<p>이후, <code class="language-plaintext highlighter-rouge">Local search</code> 알고리즘을 통해 최적의 기지국 하위 집합을 찾는다. 알고리즘은 <code class="language-plaintext highlighter-rouge">Open</code>, <code class="language-plaintext highlighter-rouge">Close</code>, <code class="language-plaintext highlighter-rouge">Exchange</code> 이 세가지 단계로 이루어져 있으며, 각각의 단계에서 시스템의 power 소비를 업데이트하여 기지국을 추가하거나 제거하거나 교환하는 방식으로 최적의 구성을 찾는다.</p>]]></content><author><name>&lt;firstname&gt; &lt;lastname&gt;</name><email>&lt;mail@domain.tld&gt;</email></author><category term="example" /><summary type="html"><![CDATA[This feature release adds new social media icons for 2024 and makes dark mode available to everyone.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/pawel-czerwinski-848z7lbCjoo-unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/pawel-czerwinski-848z7lbCjoo-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Introducing Hydejack 9</title><link href="http://localhost:4000/blog/example/2020-07-03-introducing-hydejack-9/" rel="alternate" type="text/html" title="Introducing Hydejack 9" /><published>2020-07-03T00:00:00+09:00</published><updated>2020-07-03T00:00:00+09:00</updated><id>http://localhost:4000/blog/example/introducing-hydejack-9</id><content type="html" xml:base="http://localhost:4000/blog/example/2020-07-03-introducing-hydejack-9/"><![CDATA[<p class="lead">Version 9 is the most complete version of Hydejack yet.</p>
+<p>이후, <code class="language-plaintext highlighter-rouge">Local search</code> 알고리즘을 통해 최적의 기지국 하위 집합을 찾는다. 알고리즘은 <code class="language-plaintext highlighter-rouge">Open</code>, <code class="language-plaintext highlighter-rouge">Close</code>, <code class="language-plaintext highlighter-rouge">Exchange</code> 이 세가지 단계로 이루어져 있으며, 각각의 단계에서 시스템의 power 소비를 업데이트하여 기지국을 추가하거나 제거하거나 교환하는 방식으로 최적의 구성을 찾는다.</p>]]></content><author><name>&lt;firstname&gt; &lt;lastname&gt;</name><email>&lt;mail@domain.tld&gt;</email></author><category term="paper" /><summary type="html"><![CDATA[This feature release adds new social media icons for 2024 and makes dark mode available to everyone.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/pawel-czerwinski-848z7lbCjoo-unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/pawel-czerwinski-848z7lbCjoo-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Introducing Hydejack 9</title><link href="http://localhost:4000/blog/example/2020-07-03-introducing-hydejack-9/" rel="alternate" type="text/html" title="Introducing Hydejack 9" /><published>2020-07-03T00:00:00+09:00</published><updated>2020-07-03T00:00:00+09:00</updated><id>http://localhost:4000/blog/example/introducing-hydejack-9</id><content type="html" xml:base="http://localhost:4000/blog/example/2020-07-03-introducing-hydejack-9/"><![CDATA[<p class="lead">Version 9 is the most complete version of Hydejack yet.</p>
 
 <p><a href="#linking-in-style">Modernized</a> <a href="#whats-in-the-cards">design</a>, <a href="#ready-for-the-big-screen">big headlines</a>, big new features: <a href="#built-in-search">Built-In Search</a>, <a href="#sticky-table-of-contents">Sticky Table of Contents</a>, and <a href="#auto-hiding-navbar">Auto-Hiding Navbar</a>. That <a href="#and-much-more">and more</a> is Hydejack 9.</p>
 

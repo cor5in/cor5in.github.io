@@ -16,3 +16,27 @@ links:
     url: https://hydejack.com/
 sitemap: false
 ---
+
+# O-RAN AIMLFW
+
+## Introduction
+
+
+## Installation
+
+1. 설치 스크립트 실행
+   
+```
+bin/install_traininghost.sh
+```
+
+![Fig 1](/assets/img/projects/aimlfw/installation_1.png)
+
+
+2. 10 - 20분 정도 기다린 후 파드가 잘 설치되어 있는지 확인
+   
+```
+kubectl get pod -A
+```
+
+![Fig 2](/assets/img/projects/aimlfw/installation_2.png)
