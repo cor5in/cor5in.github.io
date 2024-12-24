@@ -141,7 +141,7 @@ class BatchGenerator:
         self.batch_size = batch_size
         
     def generate_batch(self):
-        probs = self.priority_calc.get_sampling_probabilities()
+        probss = self.priority_calc.get_sampling_probabilities()
         indices = np.random.choice(
             len(self.storage.memory),
             self.batch_size,
